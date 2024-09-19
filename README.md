@@ -1,1 +1,1 @@
-# Django_dashboard
+# Django Dashboard
