@@ -1,0 +1,80 @@
+@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+
+
+
+/*      table css         */
+.container {
+    border-radius: 23px;
+    text-align: left;
+    overflow: hidden;
+    width: 80%;
+
+    display: table;
+
+}
+
+.container th h1 {
+    font-weight: bold;
+    font-size: 1em;
+    text-align: left;
+    
+}
+
+.container td {
+    font-weight: normal;
+    font-size: 1em;
+    -webkit-box-shadow: 0 2px 2px -2px #0E1119;
+    -moz-box-shadow: 0 2px 2px -2px #0E1119;
+    box-shadow: 0 2px 2px -2px #0E1119;
+}
+
+
+.container td, .container th {
+    padding-bottom: 1%;
+    padding-top: 1%;
+    padding-left: 2%;
+    width: 28px;
+}
+
+/* Background-color of the odd rows */
+.container tr {
+    background-color: #c7cdd8;
+}
+
+
+
+.container td:first-child {
+    color: #230a42;
+}
+
+.container tr:hover {
+    background-color:  #6e7077d1;
+    -webkit-box-shadow: 0 6px 6px -6px #0E1119;
+    -moz-box-shadow: 0 6px 6px -6px #0E1119;
+    box-shadow: 0 6px 6px -6px #0E1119;
+}
+
+.container td:hover {
+    background-color: #909399;
+    color: #d21515;
+    font-weight: bold;
+
+    box-shadow: #2f2a2b77 -1px 1px, #2f2a2b77 -2px 2px, #2f2a2b77 -3px 3px, #2f2a2b77 -4px 4px, #2f2a2b77 -5px 5px, #2f2a2b77 -6px 6px;
+    transform: translate3d(6px, -6px, 0);
+
+    transition-delay: 0s;
+    transition-duration: 0.4s;
+    transition-property: all;
+    transition-timing-function: line;
+}
+
+@media (max-width: 800px) {
+
+    .container td:nth-child(4),
+    .container th:nth-child(4) {
+        display: none;
+    }
+}
+
+/*  table css eds here   */

@@ -1,0 +1,31 @@
+
+    <table class="container">
+        <thead>
+            <tr>
+                <th colspan="{{table.0.keys|length}}" style="text-align: center;font-size: 2em;">
+                    {{ table_title }} 
+                </th>
+                
+              </tr>
+            <tr>
+                {% for column_name in table.0 %}
+                    <th>
+                        <h1>{{column_name}}</h1>
+                    </th>
+                 
+                {% endfor %}
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in table %}
+                <tr>
+                    {% for key, value in item.items %}
+                        <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+
+
+        </tbody>
+    </table>

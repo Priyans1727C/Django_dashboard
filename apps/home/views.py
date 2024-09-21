@@ -1,5 +1,10 @@
 from django.shortcuts import render
+from .models import Item
+from django.core.serializers import serialize
+
 
 # Create your views here.
 def home(request):
-    return render(request,'home/index.html')
+    items = Item.objects.values() 
+    items_list = list(items)
+    return render(request,'home/index.html',context={"table_title":"Avilable Items","table":items_list})
