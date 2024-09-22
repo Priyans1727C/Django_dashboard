@@ -408,13 +408,13 @@ button, a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 32px;
+    padding-bottom: 20px;
 }
 .content-section-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 24px;
+    margin-bottom: 15px;
     color: var(--main-color);
 }
 .content-section-header p {
