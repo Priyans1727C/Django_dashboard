@@ -1,4 +1,7 @@
 from django.db import models
+from django.shortcuts import get_object_or_404
+from django.dispatch import receiver
+
 
 class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
@@ -21,7 +24,7 @@ class Category(models.Model):
 class Item(models.Model):
     name = models.CharField(max_length=100)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1, related_name='items')
-    price = models.DecimalField(max_digits=6, decimal_places=2) 
+    price = models.IntegerField() 
 
     class ItemStatus(models.TextChoices):
         AVAILABLE = 'available', 'Available'
@@ -33,12 +36,10 @@ class Item(models.Model):
         default=ItemStatus.NOT_AVAILABLE
     )
 
-    description = models.TextField(blank=True) 
     last_modified = models.DateTimeField(auto_now=True)
-
-    def __str__(self):
-        return self.name
-
+    image = models.ImageField(upload_to='dishes/', blank=True, null=True)
+    prep_time = models.DurationField(null=True, blank=True,verbose_name="Preparation Time",help_text="Duration to prepare the meal")
+    description = models.TextField(blank=True) 
 
     def save(self, *args, **kwargs):
         for field in self._meta.fields:
@@ -46,8 +47,29 @@ class Item(models.Model):
                 value = getattr(self, field.name)
                 if isinstance(value, str):
                     setattr(self, field.name, value.lower())
+       
+       #logic for deleteting the unchanged image 
+        if self.id:
+            existing = get_object_or_404(Item, id=self.id)
+            if existing.image != self.image:
+                existing.image.delete(save=False)
         
         super().save(*args, **kwargs)
+    
+    #signal for deleteting the unchanged image 
+    @receiver(models.signals.pre_delete, sender="home.Item")
+    def server_delete_files(sender, instance, **kwargs):
+
+        if instance.id is not None:
+            for field in instance._meta.fields:
+                if field.name == "image":
+                    file = getattr(instance, field.name)
+                    if file:
+                        file.delete(save=False)
+
+    def __str__(self):
+        return self.name                    
+                        
 
 class Nutrition(models.Model):
     item = models.OneToOneField(Item, on_delete=models.CASCADE, related_name='nutrition')

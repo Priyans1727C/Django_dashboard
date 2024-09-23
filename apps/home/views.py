@@ -5,6 +5,6 @@ from django.core.serializers import serialize
 
 # Create your views here.
 def home(request):
-    items = Item.objects.values() 
-    items_list = list(items)
-    return render(request,'home/index.html',context={"table_title":"Avilable Items","table":items_list})
+    items = Item.objects.all()
+    table = items.values()
+    return render(request,'home/index.html',context={"table_title":"Avilable Items","table":table,"cards":items})
