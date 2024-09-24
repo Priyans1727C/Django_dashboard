@@ -1,0 +1,41 @@
+{% load costom_filters %}
+
+
+    <section class="table__body">
+        <table>
+            <thead>
+                <tr>
+                    <th> Image <span class="icon-arrow">&UpArrow;</span></th>
+                    <th> Name <span class="icon-arrow">&UpArrow;</span></th>
+                    <th> Rating <span class="icon-arrow">&UpArrow;</span></th>
+                    <th> Delivery <span class="icon-arrow">&UpArrow;</span></th>
+                    <th> Price <span class="icon-arrow">&UpArrow;</span></th>
+                    <th> Quantity <span class="icon-arrow">&UpArrow;</span></th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+
+            {% for item in cards %}
+
+                <tr class="item_block">
+                    <td><img src="{{item.image.url}}"></td>
+                    <td> {{item.name|pascalcase}} </td>
+                    <td> 7.1 </td>
+                    <td> {{item.prep_time|to_minute}}<span> min</span></td>
+                    <td> <strong>Rs. <span class="amount">{{item.price}}</span> </strong></td>
+                    <td>
+                        <i class="fa fa-minus"></i>
+                        <span class="number" style = "margin:20px;" >1</span>
+                        <i class="fa fa-plus"></i>
+                        <p class="status delivered">Add To Cart</p>
+                    </td>
+                </tr>
+
+            {% endfor %}
+                
+            </tbody>
+        </table>
+    </section>
+    <script src="{{ ASSETS_ROOT }}/js/plugins/includes.js"></script>
+    
