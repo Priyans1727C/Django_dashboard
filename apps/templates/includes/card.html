@@ -1,7 +1,11 @@
+{% load costom_filters %}
+
+{% for item in cards %}
+
 
   <div class="container_card">
-    <img src="{{ ASSETS_ROOT }}/img/im.png" alt="IMAGE" class="img-fruit" />
-    <h3>Barger</h3>
+    <img src="{{item.image.url}}" alt="IMAGE" class="img-fruit" />
+    <h3>{{item.name|pascalcase}}</h3>
     <div class="properties">
       <div class="qty">
         <h4>Quantity</h4>
@@ -13,15 +17,16 @@
         <h4>Total Price</h4>
         <span class="price-inr">
           <i class="fa fa-inr"></i>
-          <span class="amount">50</span>
+          <span class="amount">{{item.price}}</span>
         </span>
       </div>
       <div class="delivery">
         <h4>Delivery</h4>
         <i class="fa fa-fighter-jet"></i>
-        <span class="time">In 60 mins</span>
+        <span class="time">{{item.prep_time|to_minute}}min</span>
       </div>
     </div>
     <input class="ip-add-cart" type="button" value="Add to cart" />
   </div>
 
+{% endfor %}

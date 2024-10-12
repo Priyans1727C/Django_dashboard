@@ -1,4 +1,5 @@
 {% extends "layouts/base.html" %}
+{% load costom_filters %}
 
 {% block addon_css %}
 <link rel="stylesheet" href="{{ ASSETS_ROOT }}/css/includes.css">
@@ -10,7 +11,7 @@
 <div class="content-section">
     <div class="content-section-header">
         <p>Status</p>
-        <p class="time">September, 21</p>
+        <p class="time">{{"date"|date}}</p>
     </div>
     <div class="content-section-line">
         <div class="projects-status">
@@ -53,26 +54,14 @@
         </div>
     </div>
 
+
+    
+    
     <div class="grid_block">
     {% include "includes/card.html" %}
-    {% include "includes/card.html" %}
-    {% include "includes/card.html" %}
-    {% include "includes/card.html" %}
-    {% include "includes/card.html" %}
-    {% include "includes/card.html" %}
-    {% include "includes/card.html" %}
-    {% include "includes/card.html" %}
-    {% include "includes/card.html" %}
-    {% include "includes/card.html" %}
-    {% include "includes/card.html" %}
-    {% include "includes/card.html" %}
-    {% include "includes/card.html" %}
-    {% include "includes/card.html" %}
-    {% include "includes/card.html" %}
-    {% include "includes/card.html" %}
-    {% include "includes/card.html" %}
-    {% include "includes/card.html" %}
     </div>
+
+    {% include "includes/list_view.html" %}
     
     
 
