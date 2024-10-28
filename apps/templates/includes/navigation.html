@@ -44,6 +44,19 @@
             <img src="{{ASSETS_ROOT}}/img/anime3.png" />
             <span></span>
         </button>
+        <div class="menu">
+            <ul>
+                <li><a href="#"><i class="ph-bold ph-user"></i>&nbsp;Profile</a></li>
+                <li><a href="#"><i class="ph-bold ph-envelope-simple"></i>&nbsp;Inbox</a></li>
+                <li><a href="#"><i class="ph-bold ph-gear-six"></i>&nbsp;Settings</a></li>
+                <li><a href="#"><i class="ph-bold ph-question"></i>&nbsp;Help</a></li>
+                {% if user.is_authenticated%}
+                <li><a href="{% url 'logout' %}" ><i class="ph-bold ph-sign-out"></i>&nbsp;Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'login' %}" ><i class="ph-bold ph-sign-out"></i>&nbsp;Login</a></li>
+                {% endif %}
+            </ul>
+        </div>
     </div>
 
 </div>

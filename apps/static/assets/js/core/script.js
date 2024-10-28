@@ -1,3 +1,13 @@
+let profile = document.querySelector('.profile-btn');
+let menu = document.querySelector('.menu');
+
+profile.onclick = function () {
+    menu.classList.toggle('active');
+}
+
+
+
+
 //js for toogle dark mode start here
 
 document.addEventListener('DOMContentLoaded', function () {
